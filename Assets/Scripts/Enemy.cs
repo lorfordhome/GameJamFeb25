@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float health = 1;
     public float speed = 1;
     public float rotationSpeed = 1;
-    public int expGiven = 1;
+    public float expGiven = 1;
     private Player playerTarget;
 
     // Start is called before the first frame update
