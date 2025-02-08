@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
 {
     public int maxHealth=5;
     public float currentHealth;
+    public int level = 1;
+    public int currentEXP = 0;
+    public int expToLevel = 3;
+
 
 
     private void Awake()
@@ -31,6 +35,19 @@ public class Player : MonoBehaviour
         {
             Die();
         }
+    }
+    void LevelUp()
+    {
+        Debug.Log("Level up");
+    }
+    public void RecieveEXP(int expGain)
+    {
+        currentEXP += expGain;
+        if (currentEXP >= expToLevel)
+        {
+            LevelUp();
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
