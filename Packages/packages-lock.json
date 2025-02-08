@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "com.thenathannator.plasticband": {
+      "version": "file:C:/Users/c3075849/Downloads/com.thenathannator.plasticband-0.8.5.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.unity.inputsystem": "1.4.4"
+      }
+    },
     "com.unity.2d.animation": {
       "version": "9.1.1",
       "depth": 1,
