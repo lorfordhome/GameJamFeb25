@@ -3819,7 +3819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb69b2e1f5c9b8499de0faa456e0783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinSpeed: 9
+  spinSpeed: 2100
 --- !u!212 &2014794344
 SpriteRenderer:
   m_ObjectHideFlags: 0
