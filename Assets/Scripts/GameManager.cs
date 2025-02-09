@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
             pauseScreen.SetActive(true);
             gameHUD.SetActive(false);
+            turntable.PauseHaptics();
             Debug.Log("game paused");
         }
     }
@@ -93,12 +94,13 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1f;
             pauseScreen.SetActive(false);
             gameHUD.SetActive(true);
+            turntable.ResumeHaptics();
             Debug.Log("game resumed");
         }
     }
     public void CheckForPauseAndResume()
     {
-        if (turntable.buttonNorth.isPressed)
+        if (turntable.buttonNorth.wasReleasedThisFrame)
         {
             if (currentState == GameState.Paused)
             {
@@ -115,7 +117,6 @@ public class GameManager : MonoBehaviour
     {
         levelUpSound.Play();
         ChangeState(GameState.LevelUp);
-       // player.SendMessage("RemoveAndApplyUpgrades");
     }
     public void EndLevelUp()
     {

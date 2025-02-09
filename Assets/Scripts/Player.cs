@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     void LevelUp()
     {
         Debug.Log("Level up");
+        GameManager.instance.StartLevelUp();
         //check for excess exp
         float excessEXP = expToLevel - currentEXP;
         currentEXP = 0;

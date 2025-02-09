@@ -6,6 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public float spawnInterval=2;
+    public int enemyCount=1;
+    public int enemyCountIncreaseInterval = 15;
     public float enemySpeed = 0.3f;
     public float enemySpeedMultiplier = 0.1f;
     public float minimumSpawnInterval = 0.6f;
@@ -26,10 +28,14 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        //instantiate enemy as child of disc (so it will rotate accordingly)
-        GameObject newEnemy=Instantiate(enemyPrefab, player.position + relativeSpawnPoints[Random.Range(0, relativeSpawnPoints.Count)].position, Quaternion.identity,disc);
-        newEnemy.GetComponent<Enemy>().speed = (Random.Range(0.3f, enemySpeed));
-        //Debug.Log(newEnemy.GetComponent<Enemy>().speed);
+        for (int i = 0; i < enemyCount; i++)
+        {
+            //instantiate enemy as child of disc (so it will rotate accordingly)
+            //GameObject newEnemy = Instantiate(enemyPrefab, player.position + relativeSpawnPoints[Random.Range(0, relativeSpawnPoints.Count)].position, Quaternion.identity, disc);
+            GameObject newEnemy = Instantiate(enemyPrefab, relativeSpawnPoints[Random.Range(0, relativeSpawnPoints.Count)].position, Quaternion.identity, disc);
+            newEnemy.GetComponent<Enemy>().speed = (Random.Range(0.3f, enemySpeed));
+            //Debug.Log(newEnemy.GetComponent<Enemy>().speed);
+        }
     }
     void Update()
     {
@@ -52,6 +58,10 @@ public class EnemySpawner : MonoBehaviour
                     spawnInterval = minimumSpawnInterval;
                 Debug.Log("spawn interval has been reduced to " + spawnInterval);
 
+            }
+            if (currentRound > 0&&currentRound % enemyCountIncreaseInterval == 0)
+            {
+                enemyCount++;
             }
         }
     }

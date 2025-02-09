@@ -15,13 +15,16 @@ public class Bullet : Weapon
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
-        {
+        { 
             Enemy enemy = collision.GetComponent<Enemy>();
-            enemy.takeDamage(damage);
+            if (enemy.health > 0)
+            {
+                enemy.takeDamage(damage);
 
-            pierce--;
-            if (pierce<=0)
-                Destroy(this.gameObject);
+                pierce--;
+                if (pierce <= 0)
+                    Destroy(this.gameObject);
+            }
 
         }
     }
